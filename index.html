@@ -9,40 +9,41 @@
 
 <body>
 
-    <header>
-        <h1>Perceptive Agency Technical Test</h1>
-    </header>
+<header>
+    <h1>Perceptive Agency Technical Test</h1>
+</header>
 
-    <section>
-        <form action="" accept-charset="UTF-8">
-            <div>
-                <label for="start_date">Start Date</label><br>
-                <input type="date" name="start_date" id="start_date">
-            </div>
-            <div>
-                <label for="end_date">End Date</label><br>
-                <input type="date" name="end_date" id="end_date">
-            </div>
-            <div>
-                <a href="#" id="submitBtn">Submit</a>
-            </div>
-        </form>
-    </section>
-
-    <section>
-        <div id="results-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>NEO Reference ID</th>
-                        <th>Name</th>
-                        <th>Close Approach Date</th>
-                    </tr>
-                </thead>
-                <tbody id="results"></tbody>
-            </table>
+<section>
+    <form action="" accept-charset="UTF-8">
+        <div>
+            <label for="start_date">Start Date</label><br>
+            <input type="date" name="start_date" id="start_date">
         </div>
-    </section>
+        <div>
+            <label for="end_date">End Date</label><br>
+            <input type="date" name="end_date" id="end_date">
+        </div>
+        <div>
+            <a href="#" id="submitBtn">Submit</a>
+        </div>
+    </form>
+</section>
+
+<section>
+    <div id="status-message"></div>
+    <div id="results-table">
+        <table>
+            <thead>
+            <tr>
+                <th>NEO Reference ID</th>
+                <th>Name</th>
+                <th>Close Approach Date</th>
+            </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+    </div>
+</section>
 
 </body>
 </html>
