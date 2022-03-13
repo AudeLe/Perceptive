@@ -21,61 +21,65 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
             endDate = new Date(new Date().setDate(new Date().getDate()+7)).toISOString().split('T')[0];
         }
-        //var startDate = jQuery('#start_date').val() ? jQuery('#start_date').val() : null;
-        //var endDate = jQuery('#end_date').val() ? jQuery('#end_date').val() : null;
 
-        //var date = new Date();
-        //var today = (date).toISOString().split('T')[0];
-        //var sevenmore = new Date(new Date().setDate(new Date().getDate()+7)).toISOString().split('T')[0];
+        var diff_time = new Date(endDate).getTime() - new Date(startDate).getTime();
+        var diff_days = diff_time / (1000 * 3600 * 24);
 
-        console.log(startDate, endDate);
-        jQuery.getJSON('script.php', {
-            command: 'fetch',
-            start_date: startDate,
-            end_date: endDate,
-        }).done(function(data){
-            console.log(data);
+        console.log(startDate, endDate, diff_time, diff_days);
+        if(diff_days <= 7){
 
-            if(data.status == 'ok'){
+            jQuery.getJSON('script.php', {
+                command: 'fetch',
+                start_date: startDate,
+                end_date: endDate,
+            }).done(function(data){
+                console.log(data);
 
-                if(data.results !== null){
+                if(data.status == 'ok'){
 
-                    let neoItems = data.results;
-                    let results;
-                    jQuery.each(neoItems, function(i, item){
-                        var result = '<td>' + neoItems[i].neo_reference_id + '</td>';
-                        result += '<td>' + neoItems[i].name + '</td>';
-                        result += '<td>' + neoItems[i].close_approach_data[0].close_approach_date_full + '</td>';
+                    if(data.results !== null){
+
+                        let neoItems = data.results;
+                        let results;
+                        jQuery.each(neoItems, function(i, item){
+                            var result = '<td>' + neoItems[i].neo_reference_id + '</td>';
+                            result += '<td>' + neoItems[i].name + '</td>';
+                            result += '<td>' + neoItems[i].close_approach_data[0].close_approach_date_full + '</td>';
 
 
-                        results += '<tr>' + result + '</tr>';
-                    });
+                            results += '<tr>' + result + '</tr>';
+                        });
 
-                    message = 'You can see the results of the Near Earth Object API query below.';
-                    statusMessage(message);
-                    jQuery('#results').empty();
-                    jQuery('#results').append(results);
+                        message = 'You can see the results of the Near Earth Object API query below.';
+                        statusMessage(message);
+                        jQuery('#results').empty();
+                        jQuery('#results').append(results);
+
+                    } else {
+
+                        message = 'Something went wrong, please make sure that the timeframe is of 7 days.';
+                        statusMessage(message);
+
+                    }
+
 
                 } else {
-
-                    message = 'Something went wrong, please make sure that the timeframe is of 7 days.';
-                    statusMessage(message);
+                    console.log('Error message: ' + data.error);
 
                 }
 
 
-            } else {
-                console.log('Error message: ' + data.error);
-
-            }
 
 
+            }).fail(function(data){
+                console.log(data);
+                console.log('An error occurred, we could not retrieve the data. Please try again later.');
+            });
 
+        } else {
+            alert('Please enter a maximum of a 7 days timeframe.');
+        }
 
-        }).fail(function(data){
-            console.log(data);
-            console.log('An error occurred, we could not retrieve the data. Please try again later.');
-        });
 
     });
 
