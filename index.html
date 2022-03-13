@@ -21,7 +21,7 @@
             </div>
             <div>
                 <label for="end_date">End Date</label><br>
-                <input type="date" name="end_start" id="end_start">
+                <input type="date" name="end_date" id="end_date">
             </div>
             <div>
                 <a href="#" id="submitBtn">Submit</a>
@@ -30,7 +30,18 @@
     </section>
 
     <section>
-        <div id="results"></div>
+        <div id="results-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NEO Reference ID</th>
+                        <th>Name</th>
+                        <th>Close Approach Date</th>
+                    </tr>
+                </thead>
+                <tbody id="results"></tbody>
+            </table>
+        </div>
     </section>
 
 </body>
