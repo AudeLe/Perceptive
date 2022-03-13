@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 results += '<tr>' + result + '</tr>';
             });
+            jQuery('#results').empty();
             jQuery('#results').append(results);
 
             if(data.error){

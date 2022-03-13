@@ -63,8 +63,11 @@ function sort_results($response, &$results){
         }
     }
 
-    //usort($results, fn($a, $b) => strcmp($a->close_approach_data->epoch_date_close_approach > $b->close_approach_data->epoch_date_close_approach));
-
+    // Sorting the results ASC
+    usort($results,function($first,$second){
+        return $first->close_approach_data[0]->epoch_date_close_approach > $second->close_approach_data[0]->epoch_date_close_approach;
+    });
 
     return $results;
 }
+
