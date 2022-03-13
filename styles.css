@@ -5,7 +5,55 @@ html{
     width: 100%;
 }
 
+header{
+    display: flex;
+    justify-content: center;
+}
+
 body{
     margin: 0;
     width: 100%;
+}
+
+section#form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#form-explanation{
+    text-align: center;
+}
+
+form{
+    display: flex;
+}
+
+form div{
+    display: flex;
+    margin-right: 1rem;
+}
+
+form label{
+    margin-right: 1rem;
+}
+
+#display-results{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#results-table{
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+#results-table table{
+    border-spacing: 0;
+}
+
+#results-table th, #results-table td{
+    border: 1px solid #000;
+    padding: 10px;
 }
